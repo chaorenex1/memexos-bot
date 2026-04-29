@@ -19,6 +19,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@repo/store": "workspace:*",
+    "@repo/types": "workspace:*",
     "@repo/utils": "workspace:*"
   },
   "peerDependencies": {

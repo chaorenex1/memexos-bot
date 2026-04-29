@@ -8,3 +8,4 @@ export * from './use-storage';
 export * from './use-event-listener';
 export * from './use-mounted';
 export * from './use-toggle';
+export * from './use-permission';

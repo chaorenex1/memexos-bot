@@ -30,6 +30,7 @@
     "@radix-ui/react-tabs": "^1.1.1",
     "@repo/hooks": "workspace:*",
     "@repo/icons": "workspace:*",
+    "@repo/types": "workspace:*",
     "@repo/utils": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

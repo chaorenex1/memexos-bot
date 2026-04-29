@@ -6,8 +6,10 @@ export interface AppRouteMeta {
   title?: string;
   /** 是否需要登录 */
   requiresAuth?: boolean;
-  /** 所需角色 */
+  /** 所需角色（满足任一即可） */
   roles?: string[];
+  /** 所需权限（满足任一即可，支持通配符） */
+  permissions?: string[];
   /** 是否布局到 layout 内 */
   layout?: 'pc' | 'mobile' | 'auth' | 'desktop' | 'simple' | 'none';
 }

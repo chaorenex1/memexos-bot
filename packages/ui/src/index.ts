@@ -25,6 +25,8 @@ export * from './components/business/data-table';
 export * from './components/business/search-form';
 export * from './components/business/form-card';
 export * from './components/business/empty-state';
+export * from './components/business/permission-guard';
+export * from './components/business/nav-menu';
 
 // 桌面组件
 export * from './components/desktop/window-titlebar';
