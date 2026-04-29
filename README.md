@@ -1,13 +1,13 @@
-# React Universal Electron Starter
+# MemexOS AI Chatbot
 
-> 基于 React + TypeScript + Vite + Electron 的多端业务脚手架，
-> 一套代码同时支撑 **PC Web / Mobile Web / Desktop** 三端。
+> 基于 React + TypeScript + Vite + Electron 构建的 **AI Chatbot 多端应用**，
+> 一套代码同时支撑 **PC Web / Mobile Web / Desktop** 三端，提供流畅的 AI 对话体验。
 
 ## 核心特性
 
-- **Monorepo**：pnpm workspace + Turborepo
-- **三端能力**：PC Web / Mobile Web / Electron Desktop
-- **四层复用**：UI / Store / Request / Platform
+- **AI 对话引擎**：集成大语言模型，支持多轮对话、流式响应、上下文记忆
+- **多端覆盖**：PC Web / Mobile Web / Electron Desktop 统一代码库
+- **Monorepo 架构**：pnpm workspace + Turborepo，四层复用（UI / Store / Request / Platform）
 - **现代工具链**：Vite 5、electron-vite 2、TypeScript 5.5
 - **企业级规范**：ESLint 9 + Prettier 3 + Husky 9 + commitlint + Changesets
 
@@ -32,7 +32,7 @@
 ## 目录结构
 
 ```
-react-universal-electron-starter/
+memexos-bot/
 ├─ apps/
 │  ├─ web/          # PC Web + Mobile Web SPA
 │  ├─ web-ssr/      # Next.js SSR/SSG 应用
@@ -130,7 +130,7 @@ pnpm create:component <name>
 <type>(<scope>): <subject>
 
 # 示例
-feat(web): 新增登录页骨架
+feat(web): 新增对话页骨架
 fix(desktop): 修复托盘菜单退出失败
 docs(architecture): 补充 IPC 流程图
 ```
