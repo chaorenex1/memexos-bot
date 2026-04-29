@@ -1,0 +1,38 @@
+appId: com.example.rue-starter
+productName: RUE Starter
+directories:
+  buildResources: build
+  output: release
+files:
+  - "out/**/*"
+  - "package.json"
+  - "!node_modules/**/{CHANGELOG.md,README.md,readme.md}"
+asar: true
+electronDownload:
+  mirror: https://npmmirror.com/mirrors/electron/
+mac:
+  category: public.app-category.developer-tools
+  target:
+    - dmg
+    - zip
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+win:
+  target:
+    - nsis
+  artifactName: ${productName}-${version}-setup.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+linux:
+  target:
+    - AppImage
+    - deb
+publish:
+  provider: github

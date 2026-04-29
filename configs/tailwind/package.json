@@ -1,0 +1,22 @@
+{
+  "name": "@repo/tailwind-config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./preset.ts",
+  "exports": {
+    ".": "./preset.ts",
+    "./preset": "./preset.ts",
+    "./tokens": "./tokens.ts"
+  },
+  "files": [
+    "preset.ts",
+    "tokens.ts"
+  ],
+  "dependencies": {
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

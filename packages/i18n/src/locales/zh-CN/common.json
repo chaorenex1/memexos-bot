@@ -1,0 +1,32 @@
+{
+  "app": {
+    "name": "React Universal Electron Starter",
+    "ok": "确定",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "loading": "加载中...",
+    "search": "搜索",
+    "submit": "提交",
+    "reset": "重置"
+  },
+  "menu": {
+    "dashboard": "仪表盘",
+    "settings": "设置",
+    "login": "登录",
+    "logout": "退出登录"
+  },
+  "error": {
+    "network": "网络异常，请稍后重试",
+    "unauthorized": "登录已过期，请重新登录",
+    "forbidden": "没有权限",
+    "notFound": "资源不存在",
+    "server": "服务器异常",
+    "unknown": "未知错误"
+  },
+  "form": {
+    "required": "此项必填",
+    "invalid": "格式不正确"
+  }
+}

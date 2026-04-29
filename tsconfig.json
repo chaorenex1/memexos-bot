@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/types" },
+    { "path": "./packages/constants" },
+    { "path": "./packages/utils" },
+    { "path": "./packages/validators" },
+    { "path": "./packages/i18n" },
+    { "path": "./packages/theme" },
+    { "path": "./packages/icons" },
+    { "path": "./packages/hooks" },
+    { "path": "./packages/store" },
+    { "path": "./packages/request" },
+    { "path": "./packages/router" },
+    { "path": "./packages/platform" },
+    { "path": "./packages/ui" }
+  ]
+}

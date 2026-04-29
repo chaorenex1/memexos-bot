@@ -1,0 +1,8 @@
+/** UI 组件公共 token（与 @repo/theme 联动） */
+:root {
+  --ui-spacing-xs: 4px;
+  --ui-spacing-sm: 8px;
+  --ui-spacing-md: 16px;
+  --ui-spacing-lg: 24px;
+  --ui-spacing-xl: 32px;
+}

@@ -1,0 +1,13 @@
+@import '@repo/ui/styles/globals.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Electron 拖动区/不可拖动区辅助类 */
+.app-drag {
+  -webkit-app-region: drag;
+}
+.app-no-drag {
+  -webkit-app-region: no-drag;
+}

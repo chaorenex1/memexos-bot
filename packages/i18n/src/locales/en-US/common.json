@@ -1,0 +1,32 @@
+{
+  "app": {
+    "name": "React Universal Electron Starter",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "search": "Search",
+    "submit": "Submit",
+    "reset": "Reset"
+  },
+  "menu": {
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "login": "Sign In",
+    "logout": "Sign Out"
+  },
+  "error": {
+    "network": "Network error, please try again later",
+    "unauthorized": "Session expired, please sign in again",
+    "forbidden": "No permission",
+    "notFound": "Resource not found",
+    "server": "Server error",
+    "unknown": "Unknown error"
+  },
+  "form": {
+    "required": "This field is required",
+    "invalid": "Invalid format"
+  }
+}
