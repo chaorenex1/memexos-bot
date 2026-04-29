@@ -38,6 +38,55 @@ export const colors = {
     DEFAULT: 'hsl(var(--card))',
     foreground: 'hsl(var(--card-foreground))',
   },
+
+  /**
+   * Blue 扩展色阶
+   * 与 CSS 变量联动，业务代码可用 bg-blue-500 / text-blue-400 等
+   */
+  blue: {
+    50: 'hsl(var(--blue-50))',
+    100: 'hsl(var(--blue-100))',
+    200: 'hsl(var(--blue-200))',
+    300: 'hsl(var(--blue-300))',
+    400: 'hsl(var(--blue-400))',
+    500: 'hsl(var(--blue-500))',
+    600: 'hsl(var(--blue-600))',
+    700: 'hsl(var(--blue-700))',
+    800: 'hsl(var(--blue-800))',
+    900: 'hsl(var(--blue-900))',
+    950: 'hsl(var(--blue-950))',
+  },
+
+  /**
+   * AI Chatbot 专属语义色
+   */
+  chat: {
+    user: 'hsl(var(--chat-user))',
+    ai: 'hsl(var(--chat-ai))',
+    'user-border': 'hsl(var(--chat-user-border))',
+    'ai-border': 'hsl(var(--chat-ai-border))',
+  },
+  thinking: {
+    DEFAULT: 'hsl(var(--thinking))',
+    dim: 'hsl(var(--thinking-dim))',
+  },
+  code: {
+    bg: 'hsl(var(--code-bg))',
+    border: 'hsl(var(--code-border))',
+    foreground: 'hsl(var(--code-foreground))',
+  },
+  success: {
+    DEFAULT: 'hsl(var(--success))',
+    dim: 'hsl(var(--success-dim))',
+  },
+  warning: {
+    DEFAULT: 'hsl(var(--warning))',
+    dim: 'hsl(var(--warning-dim))',
+  },
+  info: {
+    DEFAULT: 'hsl(var(--info))',
+    dim: 'hsl(var(--info-dim))',
+  },
 } as const;
 
 export const borderRadius = {

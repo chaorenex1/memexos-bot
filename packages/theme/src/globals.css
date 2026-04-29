@@ -1,69 +1,160 @@
 /**
  * @repo/theme/globals.css
- * 全局 CSS 变量：light/dark 双套配色
+ * 全局 CSS 变量：light/dark 双套配色 —— 科技蓝主题
  * apps 通过 import '@repo/theme/globals.css' 应用
+ *
+ * 设计原则：
+ * - 主色 Blue-500 (#3b82f6) 作为品牌与交互核心
+ * - Light 背景纯白，卡片/AI 消息微蓝灰 (slate-50)，用户消息浅蓝 (blue-50)
+ * - Dark 背景极深蓝黑，层次分明
+ * - 所有颜色通过 CSS 变量驱动，支持运行时切换
  */
 
 :root {
+  /* ═══════════════════════════════════════════════
+     基础语义色 (shadcn/ui 兼容)
+     ═══════════════════════════════════════════════ */
   --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
+  --foreground: 222 47% 11%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 240 10% 3.9%;
+  --card: 210 40% 98%;
+  --card-foreground: 222 47% 11%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 240 10% 3.9%;
+  --popover-foreground: 222 47% 11%;
 
-  --primary: 240 5.9% 10%;
-  --primary-foreground: 0 0% 98%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 210 40% 98%;
 
-  --secondary: 240 4.8% 95.9%;
-  --secondary-foreground: 240 5.9% 10%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222 47% 11%;
 
-  --muted: 240 4.8% 95.9%;
-  --muted-foreground: 240 3.8% 46.1%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
 
-  --accent: 240 4.8% 95.9%;
-  --accent-foreground: 240 5.9% 10%;
+  --accent: 213 100% 96%;
+  --accent-foreground: 222 47% 11%;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 40% 98%;
 
-  --border: 240 5.9% 90%;
-  --input: 240 5.9% 90%;
-  --ring: 240 5.9% 10%;
+  --border: 214 32% 91%;
+  --input: 214 32% 91%;
+  --ring: 217 91% 60%;
 
   --radius: 0.5rem;
+
+  /* ═══════════════════════════════════════════════
+     Blue 扩展色阶 (50-950)
+     业务代码可用 bg-blue-500 / text-blue-400 等
+     ═══════════════════════════════════════════════ */
+  --blue-50: 213 100% 97%;
+  --blue-100: 213 100% 94%;
+  --blue-200: 213 100% 88%;
+  --blue-300: 213 100% 75%;
+  --blue-400: 213 94% 68%;
+  --blue-500: 217 91% 60%;
+  --blue-600: 221 83% 53%;
+  --blue-700: 224 76% 48%;
+  --blue-800: 226 71% 40%;
+  --blue-900: 224 64% 33%;
+  --blue-950: 226 57% 21%;
+
+  /* ═══════════════════════════════════════════════
+     AI Chatbot 专属语义色
+     ═══════════════════════════════════════════════ */
+  /* 消息气泡 */
+  --chat-user: 213 100% 96%;
+  --chat-ai: 210 40% 98%;
+  --chat-user-border: 214 32% 91%;
+  --chat-ai-border: 214 32% 91%;
+
+  /* 思考 / 流式输出指示 */
+  --thinking: 217 91% 60%;
+  --thinking-dim: 213 100% 88%;
+
+  /* 代码块 */
+  --code-bg: 220 13% 91%;
+  --code-border: 214 32% 91%;
+  --code-foreground: 222 47% 11%;
+
+  /* 状态反馈 */
+  --success: 142 71% 45%;
+  --success-dim: 142 76% 90%;
+  --warning: 38 92% 50%;
+  --warning-dim: 48 96% 89%;
+  --info: 217 91% 60%;
+  --info-dim: 213 100% 94%;
 }
 
 .dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
+  /* ═══════════════════════════════════════════════
+     基础语义色 — Dark
+     ═══════════════════════════════════════════════ */
+  --background: 222 47% 5%;
+  --foreground: 210 40% 98%;
 
-  --card: 240 10% 3.9%;
-  --card-foreground: 0 0% 98%;
+  --card: 222 47% 7%;
+  --card-foreground: 210 40% 98%;
 
-  --popover: 240 10% 3.9%;
-  --popover-foreground: 0 0% 98%;
+  --popover: 222 47% 7%;
+  --popover-foreground: 210 40% 98%;
 
-  --primary: 0 0% 98%;
-  --primary-foreground: 240 5.9% 10%;
+  --primary: 213 94% 68%;
+  --primary-foreground: 222 47% 5%;
 
-  --secondary: 240 3.7% 15.9%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
 
-  --muted: 240 3.7% 15.9%;
-  --muted-foreground: 240 5% 64.9%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
 
-  --accent: 240 3.7% 15.9%;
-  --accent-foreground: 0 0% 98%;
+  --accent: 217 33% 17%;
+  --accent-foreground: 210 40% 98%;
 
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
 
-  --border: 240 3.7% 15.9%;
-  --input: 240 3.7% 15.9%;
-  --ring: 240 4.9% 83.9%;
+  --border: 217 33% 17%;
+  --input: 217 33% 17%;
+  --ring: 213 94% 68%;
+
+  /* ═══════════════════════════════════════════════
+     Blue 扩展色阶 — Dark (反转亮度)
+     ═══════════════════════════════════════════════ */
+  --blue-50: 226 57% 21%;
+  --blue-100: 224 64% 27%;
+  --blue-200: 226 71% 33%;
+  --blue-300: 224 76% 40%;
+  --blue-400: 221 83% 47%;
+  --blue-500: 217 91% 60%;
+  --blue-600: 213 94% 68%;
+  --blue-700: 213 100% 75%;
+  --blue-800: 213 100% 85%;
+  --blue-900: 213 100% 92%;
+  --blue-950: 213 100% 97%;
+
+  /* ═══════════════════════════════════════════════
+     AI Chatbot 专属语义色 — Dark
+     ═══════════════════════════════════════════════ */
+  --chat-user: 217 33% 17%;
+  --chat-ai: 222 47% 7%;
+  --chat-user-border: 217 33% 20%;
+  --chat-ai-border: 217 33% 20%;
+
+  --thinking: 213 94% 68%;
+  --thinking-dim: 217 33% 17%;
+
+  --code-bg: 220 30% 8%;
+  --code-border: 217 33% 20%;
+  --code-foreground: 210 40% 98%;
+
+  --success: 142 76% 36%;
+  --success-dim: 142 40% 18%;
+  --warning: 38 92% 50%;
+  --warning-dim: 38 40% 18%;
+  --info: 213 94% 68%;
+  --info-dim: 217 33% 17%;
 }
 
 * {
