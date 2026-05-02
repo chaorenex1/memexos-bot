@@ -1,7 +1,7 @@
 /** FormCard：将表单包在 Card 内的常用组合 */
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../ui/card';
-
 import type { ReactNode } from 'react';
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export interface FormCardProps {
   title?: ReactNode;

@@ -4,9 +4,9 @@
  */
 import { Maximize2, Minimize2, Minus, X } from 'lucide-react';
 
-import { cn } from '../../lib/cn';
-
 import type { CSSProperties, ReactNode } from 'react';
+
+import { cn } from '@/lib/cn';
 
 export interface WindowTitlebarProps {
   title?: ReactNode;

@@ -25,7 +25,7 @@ const navItems: NavMenuItem[] = [
 
 export function PcLayout() {
   const location = useLocation();
-  const permissions = useUserStore((s) => s.user?.permissions ?? []);
+  const permissions = useUserStore((s) => s.user?.access.grants ?? []);
 
   const activeKey = navItems.find((item) =>
     item.href

@@ -10,7 +10,7 @@ import type { PermissionGuardConfig } from '@repo/types';
  * 获取当前用户的权限列表
  */
 export function usePermissions(): string[] {
-  return useUserStore((s) => s.user?.permissions ?? []);
+  return useUserStore((s) => s.user?.access.grants ?? []);
 }
 
 /**
@@ -35,9 +35,9 @@ export function usePermission(config?: PermissionGuardConfig): boolean {
  * const isManager = useHasRole(['admin', 'manager'])
  */
 export function useHasRole(role: string | string[]): boolean {
-  const roles = useUserStore((s) => s.user?.roles ?? []);
+  const userType = useUserStore((s) => s.user?.userType ?? null);
   return useMemo(() => {
     const required = Array.isArray(role) ? role : [role];
-    return required.some((r) => roles.includes(r));
-  }, [roles, role]);
+    return userType ? required.includes(userType) : false;
+  }, [role, userType]);
 }

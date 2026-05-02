@@ -1,7 +1,7 @@
 /** 空状态组件 */
 import { FileX2 } from 'lucide-react';
 
-import { cn } from '../../../lib/cn';
+import { cn } from '../@/lib/cn';
 
 import type { ReactNode } from 'react';
 

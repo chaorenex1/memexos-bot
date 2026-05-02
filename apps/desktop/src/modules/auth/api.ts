@@ -28,6 +28,7 @@ const authStoreAdapter = {
 };
 
 export const login = authApi.login;
+export const register = authApi.register;
 
 export async function bootstrapAuthSession(): Promise<void> {
   return bootstrapSharedAuthSession(authApi, authStoreAdapter);

@@ -1,7 +1,7 @@
 /** Mobile 底部 TabBar */
-import { cn } from '../../lib/cn';
-
 import type { ReactNode } from 'react';
+
+import { cn } from '@/lib/cn';
 
 export interface MobileTabItem {
   key: string;

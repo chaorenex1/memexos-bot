@@ -1,7 +1,7 @@
 /** Mobile 页面壳：标题栏 + 内容区 + 可选 tabbar */
-import { cn } from '../../lib/cn';
-
 import type { ReactNode } from 'react';
+
+import { cn } from '@/lib/cn';
 
 export interface MobilePageProps {
   title?: ReactNode;

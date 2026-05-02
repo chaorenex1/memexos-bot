@@ -7,7 +7,7 @@ import {
   type HTMLAttributes,
 } from 'react';
 
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 
 export const Dialog = DialogPrimitive.Root;
 export const DialogTrigger = DialogPrimitive.Trigger;

@@ -3,7 +3,7 @@
  * - 业务侧传入 columns + data 即可
  * - 后续可扩展分页/排序/筛选
  */
-import { cn } from '../../../lib/cn';
+import { cn } from '../@/lib/cn';
 
 import type { ReactNode } from 'react';
 

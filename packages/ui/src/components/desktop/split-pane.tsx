@@ -3,7 +3,7 @@
 /** 简单分栏：左右或上下两栏，左/上栏可调宽 */
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 
 export interface SplitPaneProps {
   direction?: 'horizontal' | 'vertical';

@@ -1,14 +1,8 @@
 import { useUserStore } from '@repo/store';
-import { Button, Card, CardContent, CardHeader, CardTitle, Input } from '@repo/ui';
-import { auth } from '@repo/validators';
-import { useState, type FormEvent } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
-
-import type { auth as AuthValidators } from '@repo/validators';
+import { Card, CardContent, CardHeader, CardTitle, LoginForm } from '@repo/ui';
+import { Navigate, useLocation, useNavigate, Link } from 'react-router-dom';
 
 import { useLoginMutation } from '@/modules/auth/hooks';
-
-type LoginInput = AuthValidators.LoginInput;
 
 export default function Login() {
   const navigate = useNavigate();
@@ -17,38 +11,15 @@ export default function Login() {
   const hydrated = useUserStore((s) => s.hydrated);
   const status = useUserStore((s) => s.status);
 
-  const [form, setForm] = useState<LoginInput>({
-    username: '',
-    password: '',
-    remember: false,
-  });
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
   if (hydrated && status === 'authenticated') {
     const from = (location.state as { from?: string } | null)?.from ?? '/';
     return <Navigate to={from} replace />;
   }
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
-    event.preventDefault();
-    const parsed = auth.loginSchema.safeParse(form);
-    if (!parsed.success) {
-      setErrorMessage(parsed.error.issues[0]?.message ?? '表单校验失败');
-      return;
-    }
-
-    setErrorMessage(null);
-    try {
-      await mutation.mutateAsync(parsed.data);
-      const from = (location.state as { from?: string } | null)?.from ?? '/';
-      navigate(from, { replace: true });
-    } catch (error) {
-      setErrorMessage(
-        error && typeof error === 'object' && 'message' in error
-          ? String(error.message)
-          : '登录失败',
-      );
-    }
+  const onSubmit = async (values: { username: string; password: string }): Promise<void> => {
+    await mutation.mutateAsync(values);
+    const from = (location.state as { from?: string } | null)?.from ?? '/';
+    navigate(from, { replace: true });
   };
 
   return (
@@ -58,33 +29,13 @@ export default function Login() {
           <CardTitle>登录桌面端</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={onSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label className="text-sm font-medium">用户名</label>
-              <Input
-                placeholder="请输入用户名"
-                value={form.username}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, username: event.target.value }))
-                }
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-medium">密码</label>
-              <Input
-                type="password"
-                placeholder="请输入密码"
-                value={form.password}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, password: event.target.value }))
-                }
-              />
-            </div>
-            {errorMessage ? <p className="text-sm text-destructive">{errorMessage}</p> : null}
-            <Button type="submit" className="w-full" disabled={mutation.isPending}>
-              {mutation.isPending ? '登录中...' : '登录'}
-            </Button>
-          </form>
+          <LoginForm onSubmit={onSubmit} submitLabel="登录" />
+          <p className="mt-4 text-sm text-muted-foreground">
+            还没有账号？{' '}
+            <Link to="/register" className="text-foreground underline">
+              去注册
+            </Link>
+          </p>
         </CardContent>
       </Card>
     </div>

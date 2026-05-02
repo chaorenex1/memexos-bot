@@ -1,18 +1,32 @@
 import { createAxiosClient } from '../client/axios-client';
 
-import type { ApiResponse, AuthTokens, LoginPayload, UserInfo } from '@repo/types';
+import type {
+  ApiResponse,
+  AuthTokens,
+  LoginPayload,
+  RegisterPayload,
+  RegisterResult,
+  UserInfo,
+} from '@repo/types';
 
-interface BackendLoginData {
-  access_token: string;
-  refresh_token: string;
-  token_type: string;
+interface BackendAccessData {
+  grants?: string[];
+  capabilities?: string[];
+}
+
+interface BackendAuthProfileData {
   user_id: number | string;
   username: string;
   email?: string;
   status?: 'active' | 'disabled';
-  role?: string;
-  roles?: string[];
-  permissions?: string[];
+  user_type?: string;
+  access?: BackendAccessData;
+}
+
+interface BackendLoginData extends BackendAuthProfileData {
+  access_token: string;
+  refresh_token: string;
+  token_type: string;
 }
 
 interface BackendRefreshData {
@@ -21,14 +35,21 @@ interface BackendRefreshData {
   token_type: string;
 }
 
-interface BackendMeData {
+interface BackendMeData extends BackendAuthProfileData {
   user_id: number | string;
   username: string;
   email?: string;
-  role?: string;
-  roles: string[];
-  permissions: string[];
+  user_type?: string;
+  access?: BackendAccessData;
   status: 'active' | 'disabled';
+}
+
+interface BackendRegisterData {
+  user_id: number | string;
+  username: string;
+  email?: string;
+  user_type?: string;
+  status?: 'active' | 'disabled';
 }
 
 export interface AuthSessionData {
@@ -38,6 +59,7 @@ export interface AuthSessionData {
 
 export interface UserAuthApi {
   login(payload: LoginPayload): Promise<AuthSessionData>;
+  register(payload: RegisterPayload): Promise<RegisterResult>;
   refresh(refreshToken: string): Promise<AuthTokens>;
   logout(refreshToken: string): Promise<void>;
   me(): Promise<UserInfo>;
@@ -65,16 +87,27 @@ function mapTokens(data: BackendLoginData | BackendRefreshData): AuthTokens {
   };
 }
 
-function mapUser(data: BackendLoginData | BackendMeData): UserInfo {
-  const roles =
-    data.roles && data.roles.length > 0 ? data.roles : data.role ? [data.role] : ['user'];
+function mapUser(data: BackendAuthProfileData): UserInfo {
   return {
     id: String(data.user_id),
     username: data.username,
     email: 'email' in data ? data.email : undefined,
-    roles,
-    permissions: data.permissions ?? [],
+    userType: data.user_type ?? 'user',
+    access: {
+      grants: data.access?.grants ?? [],
+      capabilities: data.access?.capabilities ?? [],
+    },
     status: 'status' in data ? data.status : 'active',
+  };
+}
+
+function mapRegisterResult(data: BackendRegisterData): RegisterResult {
+  return {
+    userId: String(data.user_id),
+    username: data.username,
+    userType: data.user_type ?? 'user',
+    email: data.email,
+    status: data.status,
   };
 }
 
@@ -96,6 +129,14 @@ export function createUserAuthApi(options: CreateUserAuthApiOptions): UserAuthAp
         user: mapUser(body),
         tokens: mapTokens(body),
       };
+    },
+
+    async register(payload: RegisterPayload) {
+      const { data } = await client.post<ApiResponse<BackendRegisterData>>(
+        '/v1/auth/register',
+        payload,
+      );
+      return mapRegisterResult(unwrapData(data));
     },
 
     async refresh(refreshToken: string) {

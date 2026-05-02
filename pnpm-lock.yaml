@@ -600,6 +600,9 @@ importers:
       '@repo/utils':
         specifier: workspace:*
         version: link:../utils
+      '@repo/validators':
+        specifier: workspace:*
+        version: link:../validators
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.1

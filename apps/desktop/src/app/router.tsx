@@ -5,6 +5,7 @@ import { AuthGuard } from '../routes/guards';
 
 const Dashboard = lazyRoute(() => import('../pages/dashboard'));
 const Login = lazyRoute(() => import('../pages/login'));
+const Register = lazyRoute(() => import('../pages/register'));
 const Settings = lazyRoute(() => import('../pages/settings'));
 
 export const router: ReturnType<typeof createAppRouter> = createAppRouter({
@@ -23,5 +24,6 @@ export const router: ReturnType<typeof createAppRouter> = createAppRouter({
       ],
     },
     { path: '/login', element: <Login /> },
+    { path: '/register', element: <Register /> },
   ],
 });

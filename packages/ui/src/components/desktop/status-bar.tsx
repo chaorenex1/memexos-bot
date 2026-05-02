@@ -1,7 +1,7 @@
 /** StatusBar：底部状态栏 */
-import { cn } from '../../lib/cn';
-
 import type { HTMLAttributes, ReactNode } from 'react';
+
+import { cn } from '@/lib/cn';
 
 export interface StatusBarProps extends HTMLAttributes<HTMLDivElement> {
   left?: ReactNode;

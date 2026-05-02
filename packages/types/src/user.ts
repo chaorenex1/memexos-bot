@@ -2,6 +2,11 @@
 
 export type AuthSessionStatus = 'anonymous' | 'authenticating' | 'authenticated' | 'refreshing';
 
+export interface UserAccess {
+  grants: string[];
+  capabilities?: string[];
+}
+
 export interface UserInfo {
   id: string;
   username: string;
@@ -9,8 +14,8 @@ export interface UserInfo {
   avatar?: string;
   email?: string;
   phone?: string;
-  roles: string[];
-  permissions: string[];
+  userType: 'user' | 'admin' | string;
+  access: UserAccess;
   status?: 'active' | 'disabled';
 }
 
@@ -23,5 +28,18 @@ export interface AuthTokens {
 export interface LoginPayload {
   username: string;
   password: string;
-  remember?: boolean;
+}
+
+export interface RegisterPayload {
+  username: string;
+  password: string;
+  email?: string;
+}
+
+export interface RegisterResult {
+  userId: string;
+  username: string;
+  userType: 'user' | 'admin' | string;
+  email?: string;
+  status?: 'active' | 'disabled';
 }

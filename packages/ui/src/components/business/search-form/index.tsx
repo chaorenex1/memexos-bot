@@ -3,10 +3,11 @@
  * 业务侧自行组合 Input/Select 等子项
  */
 
-import { cn } from '../../../lib/cn';
-import { Button } from '../../ui/button';
+import { cn } from '../@/lib/cn';
 
 import type { FormHTMLAttributes, ReactNode } from 'react';
+
+import { Button } from '@/components/ui/button';
 
 export interface SearchFormProps extends Omit<FormHTMLAttributes<HTMLFormElement>, 'onReset'> {
   onReset?: () => void;

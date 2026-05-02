@@ -1,12 +1,11 @@
 /** 权限感知导航菜单 */
 import { checkPermission } from '@repo/utils';
 
-import { cn } from '../../../lib/cn';
-import { MobileTabbar } from '../../mobile/mobile-tabbar';
+import { cn } from '../@/lib/cn';
 
-import type { MobileTabItem } from '../../mobile/mobile-tabbar';
 import type { NavMenuItem } from '@repo/types';
-import type { ReactNode } from 'react';
+
+import { MobileTabbar, type MobileTabItem } from '@/components/mobile/mobile-tabbar';
 
 export interface NavMenuProps {
   items: NavMenuItem[];
@@ -74,7 +73,7 @@ function NavItem({
         <NavItemLabel item={item} collapsed={collapsed} />
       </a>
       {hasChildren &&
-        item.children!.map((child: NavMenuItem) => (
+        item.children.map((child: NavMenuItem) => (
           <NavItem
             key={child.key}
             item={child}
@@ -99,7 +98,7 @@ function NavItem({
  *     { key: 'users', label: '用户管理', href: '/users', icon: <Users />, permissions: ['user:read', 'admin:*'] },
  *   ]}
  *   activeKey="dashboard"
- *   userPermissions={user?.permissions}
+ *   userPermissions={user?.access.grants}
  * />
  */
 export function NavMenu({

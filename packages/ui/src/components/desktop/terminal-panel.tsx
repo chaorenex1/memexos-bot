@@ -2,9 +2,9 @@
  * TerminalPanel：终端面板骨架
  * 真实输出来自 desktop preload 的 terminal IPC（@repo/platform/terminal）
  */
-import { cn } from '../../lib/cn';
-
 import type { ReactNode } from 'react';
+
+import { cn } from '@/lib/cn';
 
 export interface TerminalPanelProps {
   className?: string;

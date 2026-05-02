@@ -2,7 +2,7 @@ import { useUserStore } from '@repo/store';
 import { useMutation } from '@tanstack/react-query';
 import { useEffect } from 'react';
 
-import { bootstrapAuthSession, login, logout } from './api';
+import { bootstrapAuthSession, login, logout, register } from './api';
 
 export function useLoginMutation() {
   return useMutation({
@@ -18,6 +18,10 @@ export function useLoginMutation() {
       useUserStore.getState().setHydrated(true);
     },
   });
+}
+
+export function useRegisterMutation() {
+  return useMutation({ mutationFn: register });
 }
 
 export function useLogoutMutation() {

@@ -13,8 +13,8 @@ export function AuthGuard({ children, requireRoles, requirePermissions }: AuthGu
   const hydrated = useUserStore((s) => s.hydrated);
   const status = useUserStore((s) => s.status);
   const isAuthenticated = useUserStore((s) => s.isAuthenticated);
-  const roles = useUserStore((s) => s.user?.roles ?? []);
-  const permissions = useUserStore((s) => s.user?.permissions ?? []);
+  const roles = useUserStore((s) => (s.user?.userType ? [s.user.userType] : []));
+  const permissions = useUserStore((s) => s.user?.access.grants ?? []);
 
   if (!hydrated || status === 'refreshing' || status === 'authenticating') {
     return (

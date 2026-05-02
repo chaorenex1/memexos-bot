@@ -1,6 +1,6 @@
-import { cn } from '../../lib/cn';
-
 import type { HTMLAttributes } from 'react';
+
+import { cn } from '@/lib/cn';
 
 /** 响应式容器：移动端全宽，桌面端 max-width */
 export function ResponsiveContainer({ className, ...rest }: HTMLAttributes<HTMLDivElement>) {

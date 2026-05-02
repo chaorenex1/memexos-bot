@@ -1,6 +1,6 @@
-import { cn } from '../../lib/cn';
-
 import type { HTMLAttributes, ReactNode } from 'react';
+
+import { cn } from '@/lib/cn';
 
 export interface HeaderProps extends HTMLAttributes<HTMLElement> {
   /** 左侧（logo / 菜单按钮） */

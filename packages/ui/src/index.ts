@@ -27,6 +27,8 @@ export * from './components/business/form-card';
 export * from './components/business/empty-state';
 export * from './components/business/permission-guard';
 export * from './components/business/nav-menu';
+export * from './components/business/auth/login-form';
+export * from './components/business/auth/register-form';
 
 // 桌面组件
 export * from './components/desktop/window-titlebar';

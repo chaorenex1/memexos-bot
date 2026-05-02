@@ -37,7 +37,7 @@ const keyToPath: Record<string, string> = {
 export function MobileLayout() {
   const location = useLocation();
   const navigate = useNavigate();
-  const permissions = useUserStore((s) => s.user?.permissions ?? []);
+  const permissions = useUserStore((s) => s.user?.access.grants ?? []);
 
   const [active, setActive] = useState(pathToKey[location.pathname] ?? 'home');
 

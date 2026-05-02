@@ -8,7 +8,7 @@ import {
   type HTMLAttributes,
 } from 'react';
 
-import { cn } from '../../lib/cn';
+import { cn } from '@/lib/cn';
 
 export const Sheet = DialogPrimitive.Root;
 export const SheetTrigger = DialogPrimitive.Trigger;
