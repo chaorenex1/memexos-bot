@@ -12,7 +12,11 @@ const Forbidden = lazyRoute(() => import('../pages/forbidden'));
 export const routes: AppRoute[] = [
   {
     path: '/',
-    element: <ResponsiveLayout />,
+    element: (
+      <AuthGuard>
+        <ResponsiveLayout />
+      </AuthGuard>
+    ),
     children: [
       { index: true, element: <Dashboard />, meta: { title: '仪表盘' } },
       {

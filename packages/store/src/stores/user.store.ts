@@ -3,18 +3,19 @@ import { STORAGE_KEYS } from '@repo/constants';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-import { webStorage } from '../persist/web-storage';
+import { desktopStorage } from '../persist/desktop-storage';
 import { createUserSlice, type UserSlice } from '../slices/user.slice';
 
 export const useUserStore = create<UserSlice>()(
   persist((...args) => ({ ...createUserSlice(...args) }), {
     name: STORAGE_KEYS.UserInfo,
-    storage: webStorage<Partial<UserSlice>>(),
+    storage: desktopStorage<Partial<UserSlice>>(),
     partialize: (state) =>
       ({
         user: state.user,
         tokens: state.tokens,
         isAuthenticated: state.isAuthenticated,
+        status: state.status,
       }) as Partial<UserSlice>,
   }),
 );

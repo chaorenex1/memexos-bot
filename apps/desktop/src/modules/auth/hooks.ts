@@ -1,12 +1,8 @@
 import { useUserStore } from '@repo/store';
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { useEffect } from 'react';
 
-import { bootstrapAuthSession, login, logout, me } from './api';
-
-export function useMe() {
-  return useQuery({ queryKey: ['auth', 'me'], queryFn: me });
-}
+import { bootstrapAuthSession, login, logout } from './api';
 
 export function useLoginMutation() {
   return useMutation({

@@ -1,18 +1,42 @@
+import { useUserStore } from '@repo/store';
 import { Button, Form, FormField, FormItem, FormLabel, FormMessage, Input } from '@repo/ui';
 import { type auth as authValidators } from '@repo/validators';
 import { useForm } from 'react-hook-form';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import { AuthLayout } from '../../layouts/auth-layout';
+import { AuthLayout } from '@/layouts/auth-layout';
+import { useLoginMutation } from '@/modules/auth/hooks';
 
 type LoginInput = authValidators.LoginInput;
 
 export default function Login() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const mutation = useLoginMutation();
+  const hydrated = useUserStore((s) => s.hydrated);
+  const status = useUserStore((s) => s.status);
+
   const form = useForm<LoginInput>({
     defaultValues: { username: '', password: '', remember: false },
   });
 
-  const onSubmit = (values: LoginInput): void => {
-    console.info('[login] submit', values);
+  if (hydrated && status === 'authenticated') {
+    const from = (location.state as { from?: string } | null)?.from ?? '/';
+    return <Navigate to={from} replace />;
+  }
+
+  const onSubmit = async (values: LoginInput): Promise<void> => {
+    try {
+      await mutation.mutateAsync(values);
+      const from = (location.state as { from?: string } | null)?.from ?? '/';
+      navigate(from, { replace: true });
+    } catch (error) {
+      const message =
+        error && typeof error === 'object' && 'message' in error
+          ? String(error.message)
+          : '登录失败';
+      form.setError('root', { message });
+    }
   };
 
   return (
@@ -43,8 +67,11 @@ export default function Login() {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
-              登录
+            {form.formState.errors.root?.message ? (
+              <p className="text-sm text-destructive">{form.formState.errors.root.message}</p>
+            ) : null}
+            <Button type="submit" className="w-full" disabled={mutation.isPending}>
+              {mutation.isPending ? '登录中...' : '登录'}
             </Button>
           </form>
         </Form>

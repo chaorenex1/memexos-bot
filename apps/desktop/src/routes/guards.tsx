@@ -9,7 +9,6 @@ interface AuthGuardProps {
   requirePermissions?: string[];
 }
 
-/** 业务侧 AuthGuard：从 store 注入登录态、角色和权限 */
 export function AuthGuard({ children, requireRoles, requirePermissions }: AuthGuardProps) {
   const hydrated = useUserStore((s) => s.hydrated);
   const status = useUserStore((s) => s.status);

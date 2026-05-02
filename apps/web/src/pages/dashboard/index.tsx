@@ -1,12 +1,23 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@repo/ui';
+import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } from '@repo/ui';
+
+import { useLogoutMutation } from '@/modules/auth/hooks';
 
 export default function Dashboard() {
+  const logoutMutation = useLogoutMutation();
+
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex items-center justify-between gap-3">
         <h1 className="text-2xl font-semibold">仪表盘</h1>
-        <p className="text-sm text-muted-foreground">欢迎使用 React Universal Electron Starter</p>
+        <Button
+          variant="outline"
+          onClick={() => logoutMutation.mutate()}
+          disabled={logoutMutation.isPending}
+        >
+          {logoutMutation.isPending ? '退出中...' : '退出登录'}
+        </Button>
       </div>
+      <p className="text-sm text-muted-foreground">欢迎使用 React Universal Electron Starter</p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
         <Card>
           <CardHeader>

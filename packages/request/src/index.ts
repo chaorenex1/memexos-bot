@@ -9,5 +9,7 @@ export * from './query/query-keys';
 export * from './query/mutation-options';
 export * from './auth/token';
 export * from './auth/refresh-token';
+export * from './auth/user-auth-api';
+export * from './auth/session-runtime';
 export * from './types/response';
 export * from './types/pagination';

@@ -10,8 +10,8 @@ import type { AuthSessionStatus, AuthTokens, UserInfo } from '@repo/types';
 const authApi = createUserAuthApi({
   baseURL: import.meta.env.VITE_API_BASE_URL ?? '',
   getAccessToken: () => useUserStore.getState().tokens?.accessToken ?? null,
-  clientType: 'web',
-  deviceLabel: 'browser-web',
+  clientType: 'desktop',
+  deviceLabel: 'desktop-app',
 });
 
 const authStoreAdapter = {
@@ -28,7 +28,6 @@ const authStoreAdapter = {
 };
 
 export const login = authApi.login;
-export const me = authApi.me;
 
 export async function bootstrapAuthSession(): Promise<void> {
   return bootstrapSharedAuthSession(authApi, authStoreAdapter);
